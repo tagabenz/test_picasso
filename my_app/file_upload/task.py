@@ -7,7 +7,7 @@ from . import serializers
 @shared_task
 def file_processing(data):
     sleep(5)
-    # obj = File.objects.get(uploaded_at=uploaded_at)
+    # obj = File.objects.get(pk=data.get('id'))
     # obj.processed = True
     # return obj.save() 
     return data

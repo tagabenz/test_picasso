@@ -6,14 +6,14 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-# class FileViewSet(viewsets.ModelViewSet):
-#     queryset = File.objects.all()
-#     serializer_class = FileSerializer
+class FileViewSet(viewsets.ModelViewSet):
+    queryset = File.objects.all()
+    serializer_class = FileSerializer
 
-class FileAPIView(APIView):
-    def post(self, request):
-        serializer = FileSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+# class FileAPIView(APIView):
+#     def post(self, request):
+#         serializer = FileSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)
