@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./my_app:/app
+    ports:
+      - 8000:8000
+    networks:
+      my_net:
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    networks:
+      my_net:
+
+
+networks:
+  my_net:
