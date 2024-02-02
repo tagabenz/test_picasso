@@ -4,11 +4,12 @@ from file_upload.task import file_processing
 
 class FileSerializer(serializers.ModelSerializer):
     def create(self,validated_data):
-        try:
-            return File.objects.create(**validated_data)
+        try: 
+            obj = File.objects.create(**validated_data)
+            return obj
         finally:
-            # file_processing.delay(data=context)
-            pass
+            # Запуск задачи обработки файла
+            file_processing.delay(obj)
 
     class Meta:
         model = File
